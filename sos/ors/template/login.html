@@ -5,14 +5,20 @@
     <title>Title</title>
 </head>
 <body>
+{% include 'header.html' %}
 <form method="post">
     {% csrf_token %}
-    <br><br><br><br><br><br>
+    <br><br>
     <div align="center">
-        <div style="height: 30px;">
-            <h3><font color="green">{{ form.message }}</font></h3>
-        </div>
         <h1>Login</h1>
+        <div style="height: 30px;">
+            {% if form.error %}
+            <h3><font color="red">{{ form.message }}</font></h3>
+            {% else %}
+            <h3><font color="green">{{ form.message }}</font></h3>
+            {% endif %}
+        </div>
+
         <table>
             <tr>
                 <th>Login id</th>
